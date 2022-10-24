@@ -1,9 +1,12 @@
 from django.shortcuts import render, redirect
 from django.views.generic import View
-from django.contrib.auth import logout
+from django.contrib.auth import logout, authenticate, login
 from . import forms
 # Create your views here.
 
+def logout_user(request):
+    logout(request)
+    return redirect('login')
 
 
 class LoginPageView(View):

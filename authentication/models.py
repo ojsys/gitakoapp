@@ -4,11 +4,11 @@ from django.db import models
 # Create your models here.
 class User(AbstractUser):
     CREATOR = 'CREATOR'
-    SUBSCRIBER = 'SUBSCRIBER'
+    FARMER = 'FARMER'
 
     ROLE_CHOICES = (
         (CREATOR, 'Creator'),
-        (SUBSCRIBER, 'Subscriber'),
+        (FARMER, 'Farmer'),
     )
 
     profile_photo = models.ImageField()

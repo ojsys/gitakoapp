@@ -5,4 +5,5 @@ from authentication import views
 urlpatterns = [
     path('login/', views.LoginPageView.as_view(), name='login'),
     path('logout/', views.logout_user, name='logout'),
+    path('signup/', views.signup_page, name='signup'),
 ]

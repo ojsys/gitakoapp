@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<main id="main" class="main">
+{% if success %}
+     <div class="alert alert-success">Farm Budget Added Successfully</div>
+    <a href="{% url 'index' %}" class="btn btn-dark">Go to Dashboard</a>
+{% else %}
+    <div class="alert alert-danger">Something went wrong. Please try again</div>
+    <a href="{% url 'index' %}" class="btn btn-dark">Go Back</a>
+{% endif %}
+</main>
+{% endblock %}

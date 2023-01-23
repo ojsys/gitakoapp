@@ -1,0 +1,94 @@
+{% extends 'base.html' %} {% block content %}
+
+<main id="main" class="main">
+  <div class="pagetitle d-flex justify-content-between">
+    <h1 class="me-1">Farm Budget</h1>
+    <!-- Button trigger modal -->
+    <button
+      type="button"
+      class="btn btn-success"
+      data-bs-toggle="modal"
+      data-bs-target="#exampleModal"
+    >
+      Add Budget
+    </button>
+  </div>
+  <section class="section">
+    <div class="row mt-5">
+      {% if budgets %}
+      <div class="col-12">
+        <table class="table p-5">
+          <thead>
+            <tr>
+              <th scope="col">Farm Name</th>
+              <th scope="col">Blocks</th>
+              <th scope="col">Crop</th>
+              <th scope="col">Location</th>
+              <th scope="col">Hectares</th>
+              <th scope="col">Crop Season</th>
+              <th scope="col">Particulars</th>
+              <th scope="col">Product Brand</th>
+              <th scope="col">Quantity</th>
+              <th scope="col">Description</th>
+              <th scope="col">Units</th>
+              <th scope="col">Rates</th>
+              <th scope="col">Total Cost</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for budget in budgets %}
+            <tr>
+              <td>{{ budget.farmname }}</td>
+              <td>{{ budget.blocks }}</td>
+              <td>{{ budget.crop }}</td>
+              <td>{{ budget.location }}</td>
+              <td>{{ budget.hectares }}</td>
+              <td>{{ budget.cropseason }}</td>
+              <td>{{ budget.particulars }}</td>
+              <td>{{ budget.productbrand }}</td>
+              <td>{{ budget.quantity }}</td>
+              <td>{{ budget.description }}</td>
+              <td>{{ budget.units }}</td>
+              <td>{{ budget.rates }}</td>
+              <td>{{ budget.totalcost }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+      {% else %}
+         <h5 class="alert alert-success">No Budget is found at this time!</h5>
+      {% endif %}
+    </div>
+  </section>
+</main>
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Add Farm Budget</h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form method="POST" action="{% url 'addbudget' %}">
+          {{ form.as_p }} {% csrf_token %}
+          <input type="submit" value="Submit" class="btn btn-success" />
+        </form>
+      </div>
+      <div class="modal-footer"></div>
+    </div>
+  </div>
+</div>
+{% endblock %}

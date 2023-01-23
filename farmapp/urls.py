@@ -4,4 +4,6 @@ from farmapp import views
 
 urlpatterns = [
     path('', views.index, name='index'),
+    path('farmbudget/', views.farmbudget, name='farmbudget'),
+    path('addbudget/', views.addbudget, name='addbudget'),
 ]
